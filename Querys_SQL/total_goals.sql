@@ -1,12 +1,10 @@
 SELECT 
-    team,
-    SUM(goals) AS total_goals
-FROM (
-    SELECT home_team AS team, home_goals AS goals
-    FROM matches
-    UNION ALL
-    SELECT away_team AS team, away_goals AS goals
-    FROM matches
-) AS combined
-GROUP BY team
-ORDER BY total_goals DESC;
+    time AS time_com_mais_faltas,
+    SUM(faltas_cometidas) AS total_faltas
+FROM 
+    'basedosdados.mundo_transfermarkt_competicoes.brasileirao_serie_a'
+GROUP BY 
+    time
+ORDER BY 
+    total_faltas DESC
+LIMIT 1;

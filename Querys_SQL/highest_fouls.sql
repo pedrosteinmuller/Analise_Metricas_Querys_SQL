@@ -1,11 +1,11 @@
-SELECT time, sum(gols) as total_gols
+SELECT time, sum(faltas) as faltas
 FROM (
-    SELECT mandante as time, gols_mandante as gols
+    SELECT mandante as time, faltas_mandante as faltas
     FROM 'basedosdados.mundo_transfermarkt_competicoes.brasileirao_serie_a'
     UNION ALL
-    SELECT visitante as time, gols_visitante as gols
+    SELECT visitante as time, faltas_visitante as faltas
     FROM 'basedosdados.mundo_transfermarkt_competicoes.brasileirao_serie_a'
-) AS todos_gols
+) AS soma_faltas
 GROUP BY time
-ORDER BY total_gols DESC
+ORDER BY faltas DESC
 LIMIT 10;
